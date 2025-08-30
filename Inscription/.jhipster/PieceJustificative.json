@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20250528072821"
+  },
+  "dto": "mapstruct",
+  "entityTableName": "piece_justificative",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "Type",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CNI_RECTO,CNI_VERSO,ACTENAISSANCE,DIPLOME,PASSEPORT"
+    },
+    {
+      "fieldName": "fichier",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateUpload",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "valide",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "PieceJustificative",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "piecejustificative",
+      "relationshipName": "candidat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

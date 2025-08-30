@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>📋 Messages reçus (admin)</h2>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>De</th>
+      <th>À</th>
+      <th>Contenu</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let msg of messages">
+      <td>{{ msg.user?.login }}</td>
+      <td>{{ msg.destinataire?.login }}</td>
+      <td>{{ msg.contenu }}</td>
+      <td>{{ msg.dateEnvoie | date:'short' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

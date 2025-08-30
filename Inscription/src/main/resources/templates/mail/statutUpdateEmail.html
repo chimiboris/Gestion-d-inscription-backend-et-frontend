@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p>Bonjour <strong th:text="${nomComplet}">Nom</strong>,</p>
+
+<p>
+  Votre dossier a été mis à jour. Statut :
+  <strong th:text="${statut}">EN_ATTENTE</strong>
+</p>
+<p th:if="${commentaire != null}">
+  Commentaire de l’agent : <em th:text="${commentaire}">...</em>
+</p>
+<p>Merci,<br />L'équipe des admissions</p>
+</body>
+</html>
+

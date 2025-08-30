@@ -1,0 +1,10 @@
+{
+  "inscriptionApp": {
+    "TypePieceIdentite": {
+      "null": "",
+      "CNI": "CNI",
+      "PASSEPORT": "PASSEPORT",
+      "ACTENAISSANCE": "ACTENAISSANCE"
+    }
+  }
+}

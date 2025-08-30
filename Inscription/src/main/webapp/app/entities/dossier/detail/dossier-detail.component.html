@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (dossier) {
+      <div>
+        <h2 data-cy="dossierDetailsHeading"><span jhiTranslate="inscriptionApp.dossier.detail.title">Dossier</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ dossier.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.dossier.statut">Statut</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'inscriptionApp.StatutDossier.' + dossier.statut }}">{{ dossier.statut }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.dossier.dateSoumission">Date Soumission</span></dt>
+          <dd>
+            <span>{{ dossier.dateSoumission | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.dossier.commentaire">Commentaire</span></dt>
+          <dd>
+            <span>{{ dossier.commentaire }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.dossier.candidat">Candidat</span></dt>
+          <dd>
+            @if (dossier.candidat) {
+              <div>
+                <a [routerLink]="['/candidat', dossier.candidat.id, 'view']">{{ dossier.candidat.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.dossier.agent">Agent</span></dt>
+          <dd>
+            <span>{{ dossier.agent?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/dossier', dossier.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

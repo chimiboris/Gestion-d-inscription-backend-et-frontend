@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20250618144030"
+  },
+  "dto": "mapstruct",
+  "entityTableName": "rendez_vous",
+  "fields": [
+    {
+      "fieldName": "dateRdv",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "motif",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "statutRdv",
+      "fieldValues": "EN_ATTENTE,CONFIRME,REFUSE"
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "RendezVous",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "rendezVous",
+      "relationshipName": "candidat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

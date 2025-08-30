@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20250528085914"
+  },
+  "dto": "mapstruct",
+  "entityTableName": "dossier",
+  "fields": [
+    {
+      "fieldName": "statut",
+      "fieldType": "StatutDossier",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "EN_ATTENTE,INCOMPLET,VALIDE_AUTO,EN_COURS_VERIF,VALIDE_MANUEL,REFUSE"
+    },
+    {
+      "fieldName": "dateSoumission",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "commentaire",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "Dossier",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "id": true,
+      "otherEntityField": "id",
+      "otherEntityName": "candidat",
+      "otherEntityRelationshipName": "n",
+      "relationshipName": "candidat",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "dossiers",
+      "relationshipName": "agent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (candidat) {
+      <div>
+        <h2 data-cy="candidatDetailsHeading"><span jhiTranslate="inscriptionApp.candidat.detail.title">Candidat</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ candidat.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.nom">Nom</span></dt>
+          <dd>
+            <span>{{ candidat.nom }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.prenom">Prenom</span></dt>
+          <dd>
+            <span>{{ candidat.prenom }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.sexe">Sexe</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'inscriptionApp.Sexe.' + candidat.sexe }}">{{ candidat.sexe }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.nationalite">Nationalite</span></dt>
+          <dd>
+            <span>{{ candidat.nationalite }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.typePieceIdentite">Type Piece Identite</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'inscriptionApp.TypePieceIdentite.' + candidat.typePieceIdentite }}">{{
+              candidat.typePieceIdentite
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.email">Email</span></dt>
+          <dd>
+            <span>{{ candidat.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.dateNaiss">Date Naiss</span></dt>
+          <dd>
+            <span>{{ candidat.dateNaiss | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.candidat.user">User</span></dt>
+          <dd>
+            <span>{{ candidat.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/candidat', candidat.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,11 @@
+export enum Type {
+  CNI_RECTO = 'CNI_RECTO',
+
+  CNI_VERSO = 'CNI_VERSO',
+
+  ACTENAISSANCE = 'ACTENAISSANCE',
+
+  DIPLOME = 'DIPLOME',
+
+  PASSEPORT = 'PASSEPORT',
+}

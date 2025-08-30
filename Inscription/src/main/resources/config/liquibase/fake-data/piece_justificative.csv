@@ -1,0 +1,11 @@
+id;type;fichier;fichier_content_type;date_upload;valide;commentaire;candidat_id
+1;CNI_RECTO;../fake-data/blob/hipster.png;image/png;2025-05-27T17:51:04;true;puis viser;1
+2;PASSEPORT;../fake-data/blob/hipster.png;image/png;2025-05-28T05:00:32;true;parvenir céans fidèle;2
+3;ACTENAISSANCE;../fake-data/blob/hipster.png;image/png;2025-05-27T23:03:17;true;conseil municipal publier carrément;3
+4;ACTENAISSANCE;../fake-data/blob/hipster.png;image/png;2025-05-27T12:57:50;false;appeler diviser limiter;4
+5;CNI_VERSO;../fake-data/blob/hipster.png;image/png;2025-05-28T03:24:46;true;du moment que;5
+6;CNI_RECTO;../fake-data/blob/hipster.png;image/png;2025-05-27T19:01:05;false;que doucement lorsque;6
+7;CNI_RECTO;../fake-data/blob/hipster.png;image/png;2025-05-28T02:24:43;true;avant;7
+8;ACTENAISSANCE;../fake-data/blob/hipster.png;image/png;2025-05-27T12:35:22;true;membre de l’équipe attarder où;8
+9;ACTENAISSANCE;../fake-data/blob/hipster.png;image/png;2025-05-27T21:31:30;false;tantôt cyan;9
+10;DIPLOME;../fake-data/blob/hipster.png;image/png;2025-05-28T00:39:43;true;considérable;10

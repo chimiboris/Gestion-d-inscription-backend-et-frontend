@@ -1,0 +1,30 @@
+{
+  "inscriptionApp": {
+    "parcours": {
+      "home": {
+        "title": "Parcours",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Parcours",
+        "createOrEditLabel": "Créer ou éditer un Parcours",
+        "notFound": "Aucun Parcours trouvé"
+      },
+      "created": "Un nouveau Parcours a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parcours avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parcours avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Parcours {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parcours"
+      },
+      "id": "ID",
+      "etablissement": "Etablissement",
+      "specialisation": "Specialisation",
+      "niveau": "Niveau",
+      "commentaire": "Commentaire",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "candidat": "Candidat"
+    }
+  }
+}

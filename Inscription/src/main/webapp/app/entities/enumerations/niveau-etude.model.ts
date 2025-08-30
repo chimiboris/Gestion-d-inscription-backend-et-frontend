@@ -1,0 +1,11 @@
+export enum NiveauEtude {
+  BACCALAUREAT = 'BACCALAUREAT',
+
+  LICENCE = 'LICENCE',
+
+  MASTER = 'MASTER',
+
+  DOCTORAT = 'DOCTORAT',
+
+  AUTRE = 'AUTRE',
+}

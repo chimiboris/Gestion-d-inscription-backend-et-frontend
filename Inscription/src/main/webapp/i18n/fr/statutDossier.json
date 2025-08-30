@@ -1,0 +1,13 @@
+{
+  "inscriptionApp": {
+    "StatutDossier": {
+      "null": "",
+      "EN_ATTENTE": "EN_ATTENTE",
+      "INCOMPLET": "INCOMPLET",
+      "VALIDE_AUTO": "VALIDE_AUTO",
+      "EN_COURS_VERIF": "EN_COURS_VERIF",
+      "VALIDE_MANUEL": "VALIDE_MANUEL",
+      "REFUSE": "REFUSE"
+    }
+  }
+}

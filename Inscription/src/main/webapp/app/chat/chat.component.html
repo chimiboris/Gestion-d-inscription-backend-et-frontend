@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <h3>💬 Messagerie en temps réel</h3>
+
+  <div class="border p-3 mb-3" style="height: 300px; overflow-y: auto; background: #f8f9fa;">
+    <div *ngFor="let msg of messages" class="mb-2">
+      <strong>{{ msg.auteur?.login }}</strong> à <strong>{{ msg.destinataire?.login }}</strong> :
+      <span>{{ msg.contenu }}</span>
+      <br />
+      <small class="text-muted">{{ msg.dateEnvoie | date: 'short' }}</small>
+    </div>
+  </div>
+
+  <form (ngSubmit)="send()" class="d-flex">
+    <input
+      [(ngModel)]="message"
+      name="message"
+      class="form-control me-2"
+      placeholder="Écrire un message..."
+      required
+    />
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+  </form>
+</div>

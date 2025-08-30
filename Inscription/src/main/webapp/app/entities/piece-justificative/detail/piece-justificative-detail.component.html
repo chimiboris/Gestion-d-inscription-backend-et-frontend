@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pieceJustificative) {
+      <div>
+        <h2 data-cy="pieceJustificativeDetailsHeading">
+          <span jhiTranslate="inscriptionApp.pieceJustificative.detail.title">Piece Justificative</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pieceJustificative.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.type">Type</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'inscriptionApp.Type.' + pieceJustificative.type }}">{{ pieceJustificative.type }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.fichier">Fichier</span></dt>
+          <dd>
+            @if (pieceJustificative.fichier) {
+              <div>
+                <a (click)="openFile(pieceJustificative.fichier, pieceJustificative.fichierContentType)" jhiTranslate="entity.action.open"
+                  >Ouvrir</a
+                >
+                {{ pieceJustificative.fichierContentType }}, {{ byteSize(pieceJustificative.fichier) }}
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.dateUpload">Date Upload</span></dt>
+          <dd>
+            <span>{{ pieceJustificative.dateUpload | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.valide">Valide</span></dt>
+          <dd>
+            <span>{{ pieceJustificative.valide }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.commentaire">Commentaire</span></dt>
+          <dd>
+            <span>{{ pieceJustificative.commentaire }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.pieceJustificative.candidat">Candidat</span></dt>
+          <dd>
+            @if (pieceJustificative.candidat) {
+              <div>
+                <a [routerLink]="['/candidat', pieceJustificative.candidat.id, 'view']">{{ pieceJustificative.candidat.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/piece-justificative', pieceJustificative.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

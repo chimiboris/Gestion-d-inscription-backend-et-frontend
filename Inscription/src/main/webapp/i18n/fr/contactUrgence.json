@@ -1,0 +1,28 @@
+{
+  "inscriptionApp": {
+    "contactUrgence": {
+      "home": {
+        "title": "ContactUrgences",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Contact Urgence",
+        "createOrEditLabel": "Créer ou éditer un Contact Urgence",
+        "notFound": "Aucun Contact Urgence trouvé"
+      },
+      "created": "Un nouveau Contact Urgence a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Contact Urgence avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Contact Urgence avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Contact Urgence {{ id }} ?"
+      },
+      "detail": {
+        "title": "Contact Urgence"
+      },
+      "id": "ID",
+      "nomComplet": "Nom Complet",
+      "lienParente": "Lien Parente",
+      "telephone": "Telephone",
+      "email": "Email",
+      "candidat": "Candidat"
+    }
+  }
+}

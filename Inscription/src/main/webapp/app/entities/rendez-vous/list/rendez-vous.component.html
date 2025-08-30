@@ -1,0 +1,142 @@
+<div>
+  <h2 id="page-heading" data-cy="RendezVousHeading">
+    <span jhiTranslate="inscriptionApp.rendezVous.home.title">RendezVous</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="inscriptionApp.rendezVous.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-rendez-vous"
+        [routerLink]="['/rendez-vous/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="inscriptionApp.rendezVous.home.createLabel">Créer un nouveau Rendez Vous</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (rendezVous?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="inscriptionApp.rendezVous.home.notFound">Aucun Rendez Vous trouvé</span>
+    </div>
+  }
+
+  @if (rendezVous && rendezVous.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateRdv">
+              <div class="d-flex">
+                <span jhiTranslate="inscriptionApp.rendezVous.dateRdv">Date Rdv</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="motif">
+              <div class="d-flex">
+                <span jhiTranslate="inscriptionApp.rendezVous.motif">Motif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="statut">
+              <div class="d-flex">
+                <span jhiTranslate="inscriptionApp.rendezVous.statut">Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="commentaire">
+              <div class="d-flex">
+                <span jhiTranslate="inscriptionApp.rendezVous.commentaire">Commentaire</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="candidat.id">
+              <div class="d-flex">
+                <span jhiTranslate="inscriptionApp.rendezVous.candidat">Candidat</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (rendezVous of rendezVous; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/rendez-vous', rendezVous.id, 'view']">{{ rendezVous.id }}</a>
+              </td>
+              <td>{{ rendezVous.dateRdv | formatMediumDatetime }}</td>
+              <td>{{ rendezVous.motif }}</td>
+              <td jhiTranslate="{{ 'inscriptionApp.statutRdv.' + rendezVous.statut }}">{{ rendezVous.statut }}</td>
+              <td>{{ rendezVous.commentaire }}</td>
+              <td>
+                @if (rendezVous.candidat) {
+                  <div>
+                    <a [routerLink]="['/candidat', rendezVous.candidat.id, 'view']">{{ rendezVous.candidat.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/rendez-vous', rendezVous.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a [routerLink]="['/rendez-vous', rendezVous.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(rendezVous)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (rendezVous && rendezVous.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

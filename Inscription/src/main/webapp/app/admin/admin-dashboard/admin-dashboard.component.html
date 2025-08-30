@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2>📊 Statistiques des dossiers</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Statut</th>
+          <th>Nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let stat of chartData">
+          <td>{{ stat.name }}</td>
+          <td>{{ stat.value }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <ngx-charts-pie-chart
+        [view]="[400,300]"
+        [results]="chartData"
+        [legend]="true"
+        [labels]="true"
+        [doughnut]="false"
+        [gradient]="true"
+        [animations]="true"
+        [explodeSlices]="false"
+        [scheme]="colorScheme"
+      ></ngx-charts-pie-chart>
+    </div>
+  </div>
+</div>

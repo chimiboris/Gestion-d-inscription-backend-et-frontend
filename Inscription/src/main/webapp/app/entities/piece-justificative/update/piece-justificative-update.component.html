@@ -1,0 +1,163 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-piece-justificative-heading"
+        data-cy="PieceJustificativeCreateUpdateHeading"
+        jhiTranslate="inscriptionApp.pieceJustificative.home.createOrEditLabel"
+      >
+        Créer ou éditer un Piece Justificative
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'inscriptionApp.Type.null' | translate }}</option>
+            @for (type of typeValues; track $index) {
+              <option [value]="type">{{ 'inscriptionApp.Type.' + type | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)) {
+            <div>
+              @if (editForm.get('type')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.fichier" for="field_fichier">Fichier</label>
+          <div>
+            @if (editForm.get('fichier')!.value) {
+              <div class="form-text text-danger clearfix">
+                <a
+                  class="pull-start"
+                  (click)="openFile(editForm.get('fichier')!.value!, editForm.get('fichierContentType')!.value!)"
+                  jhiTranslate="entity.action.open"
+                  >Ouvrir</a
+                ><br />
+                <span class="pull-start"
+                  >{{ editForm.get('fichierContentType')!.value }}, {{ byteSize(editForm.get('fichier')!.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="editForm.patchValue({ fichier: undefined, fichierContentType: undefined })"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_fichier"
+              data-cy="fichier"
+              (change)="setFileData($event, 'fichier', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="fichier" id="field_fichier" data-cy="fichier" formControlName="fichier" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="fichierContentType"
+            id="field_fichierContentType"
+            formControlName="fichierContentType"
+          />
+          @if (editForm.get('fichier')!.invalid && (editForm.get('fichier')!.dirty || editForm.get('fichier')!.touched)) {
+            <div>
+              @if (editForm.get('fichier')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.dateUpload" for="field_dateUpload">Date Upload</label>
+          <div class="d-flex">
+            <input
+              id="field_dateUpload"
+              data-cy="dateUpload"
+              type="datetime-local"
+              class="form-control"
+              name="dateUpload"
+              formControlName="dateUpload"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.valide" for="field_valide">Valide</label>
+          <input type="checkbox" class="form-check" name="valide" id="field_valide" data-cy="valide" formControlName="valide" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.commentaire" for="field_commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="inscriptionApp.pieceJustificative.candidat" for="field_candidat">Candidat</label>
+          <select
+            class="form-control"
+            id="field_candidat"
+            data-cy="candidat"
+            name="candidat"
+            formControlName="candidat"
+            [compareWith]="compareCandidat"
+          >
+            @if (editForm.get(['candidat'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (candidatOption of candidatsSharedCollection; track $index) {
+              <option [ngValue]="candidatOption">{{ candidatOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['candidat'])!.invalid && (editForm.get(['candidat'])!.dirty || editForm.get(['candidat'])!.touched)) {
+          <div>
+            @if (editForm.get(['candidat'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

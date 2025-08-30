@@ -1,0 +1,12 @@
+{
+  "inscriptionApp": {
+    "NiveauEtude": {
+      "null": "",
+      "BACCALAUREAT": "BACCALAUREAT",
+      "LICENCE": "LICENCE",
+      "MASTER": "MASTER",
+      "DOCTORAT": "DOCTORAT",
+      "AUTRE": "AUTRE"
+    }
+  }
+}

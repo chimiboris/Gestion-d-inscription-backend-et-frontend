@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (message) {
+      <div>
+        <h2 data-cy="messageDetailsHeading"><span jhiTranslate="inscriptionApp.message.detail.title">Message</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ message.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.message.contenu">Contenu</span></dt>
+          <dd>
+            <span>{{ message.contenu }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.message.dateEnvoie">Date Envoie</span></dt>
+          <dd>
+            <span>{{ message.dateEnvoie | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="inscriptionApp.message.user">User</span></dt>
+          <dd>
+            <span>{{ message.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/message', message.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
