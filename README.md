@@ -4,8 +4,8 @@ MODE D'EMPLOI - SYSTÈME DE GESTION D’INSCRIPTION
 📱 ACCÈS ET CONNEXION 
 Première connexion 
 NB : demarrer le front et le back 
-Frontend:     npm start    ou    ng serve
-Backend:     ./mvnw
+Frontend:  npm install  puis   npm start    ou    ng serve
+Backend:   ./mvnw clean install  puis  ./mvnw
 1.	Ouvrez votre navigateur 
 
 2.	Allez à l'adresse : http://localhost:4200 ou http://localhost:9000 ou http://localhost:8080 
